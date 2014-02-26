@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Set some basic project information and targets -->
+<project name="marcopolo" default="deploy-ubuntu">
+
+	<target name="build" depends="prepare, lint, phploc, phpmd, phpcpd, phpcs, phpunit" />
+	<target name="build-parallel" depends="prepare,lint, tools-parallel, phpcpd, phpunit" />
+
+	<!-- properties 
+> Serveur FTP            : ftp.marcopolophoto.com ou ftp.cluster013.ovh.net (accès secondaire : newftp.cluster013.ovh.net)
+> Utilisateur (login)    : marcopol
+-->
+	<property environment="env" />
+	<property name="ftp.server" value="ftp.cluster013.ovh.net" />
+	<property name="ftp.user" value="marcopol" />
+	<property name="ftp.dir" value="/www" />
+	<property name="deploy.ubuntu.dir" value="/var/www" />
+	<property name="deploy.windows.dir" value="C:\PROGRA~2\EASYPH~2.1VC\data\localweb" />
+	<property name="projet.site.dir" value="src/main/site" />
+
+
+	
+	<!-- Clean up from previous builds -->
+	<target name="clean" description="Cleanup build artifacts">
+		<delete dir="${basedir}/build/coverage" />
+		<delete dir="${basedir}/build/logs" />
+		<delete dir="${basedir}/build/api" />
+		<delete dir="${basedir}/application/cache" />
+	</target>
+
+	<target name="tools-parallel" description="Run tools in parallel">
+		<parallel threadCount="2">
+			<sequential>
+				<antcall target="phpmd" />
+			</sequential>
+			<antcall target="phpcpd" />
+			<antcall target="phpcs" />
+			<antcall target="phploc" />
+			<antcall target="phpdox" />
+		</parallel>
+	</target>
+
+
+	<!-- Prepare for the new build -->
+	<target name="prepare" depends="clean" description="Prepare for build">
+		<mkdir dir="${basedir}/build/coverage" />
+		<mkdir dir="${basedir}/build/logs" />
+		<mkdir dir="${basedir}/build/api" />
+		<mkdir dir="${basedir}/application/cache" />
+	</target>
+
+	<!-- Lint the PHP files in application dir. Linting the whole ZF framework library takes forever -->
+	<target name="lint" description="Perform syntax check of sourcecode files">
+		<apply executable="php" failonerror="true">
+			<arg value="-l" />
+			<fileset dir="${basedir}/application">
+				<include name="**/*.php" />
+				<modified />
+			</fileset>
+		</apply>
+	</target>
+	<!-- PHPLoc (Lines Of Code) report -->
+	<target name="phploc" description="Measure project size using PHPLOC">
+		<exec executable="phploc">
+			<arg value="--log-csv" />
+			<arg value="${basedir}/logs/phploc.csv" />
+			<arg path="${basedir}/application" />
+		</exec>
+	</target>
+
+	<!-- PHP Mess Detector -->
+	<target name="phpmd" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+		<exec executable="phpmd">
+			<arg path="${basedir}/application" />
+			<arg value="xml" />
+			<arg value="codesize,unusedcode,naming" />
+			<arg value="--reportfile" />
+			<arg value="${basedir}/build/logs/pmd.xml" />
+		</exec>
+	</target>
+	<!-- PHP Copy Paste Detector -->
+	<target name="phpcpd" description="Find duplicate code using PHPCPD">
+		<exec executable="phpcpd">
+			<arg value="--log-pmd" />
+			<arg value="${basedir}/build/logs/pmd-cpd.xml" />
+			<arg path="${basedir}/application" />
+		</exec>
+	</target>
+
+	<!-- PHP Code Sniffer - tokenises PHP, JS and CSS files and detects violations of defined coding standards -->
+	<target name="phpcs" description="Check code with PHP Code Sniffer">
+		<exec executable="phpcs">
+			<arg value="-n" />
+			<arg path="${basedir}/application" />
+		</exec>
+	</target>
+
+	<!-- Kick off phpunit - this requires 3.4.1 because of assertType(), deprecated in 3.5.x and removed from 3.6.x. -->
+	<target name="phpunit">
+		<exec dir="${basedir}/tests" executable="phpunit" failonerror="true" description="Run unit tests with PHPUnit">
+			<env key="APPLICATION_ENV" value="testing" />
+			<arg line="--verbose --stderr" />
+		</exec>
+	</target>
+
+	<!-- Deploiement local -->
+	<target name="deploy-windows">
+		<delete dir="${deploy.windows.dir}/${ant.project.name}" />
+		<mkdir dir="${deploy.windows.dir}/${ant.project.name}" />
+		
+		<copy todir="${deploy.windows.dir}/${ant.project.name}">
+			<fileset dir="${basedir}/${projet.site.dir}" />
+		</copy>
+	</target>
+
+	<!-- Deploiement local ubuntu -->
+	<target name="deploy-ubuntu">
+		<delete dir="${deploy.ubuntu.dir}/${ant.project.name}" />
+		<mkdir dir="${deploy.ubuntu.dir}/${ant.project.name}" />
+		
+		<copy todir="${deploy.ubuntu.dir}/${ant.project.name}">
+			<fileset dir="${basedir}/${projet.site.dir}" />
+		</copy>
+	</target>	
+
+	<!-- This target will do all required job -->
+	<target name="deploy-ovh">
+
+		<!-- collecte du pwd ftp -->
+		  <input
+		    message="Please enter ftp pwd:"
+		    addproperty="ftp.password"
+		  />
+		<!-- Clean cache of web application on ftp server -->
+		<ftp action="delete" server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" remotedir="${ftp.dir}" verbose="true" passive="yes">
+			<fileset>
+				<include name="**/*" />
+			</fileset>
+		</ftp>
+
+		<!-- Upload to the server	    -->
+		<ftp server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" remotedir="${ftp.dir}" binary="yes" verbose="false" passive="yes">
+			<fileset dir="${projet.site.dir}">
+				<include name="**/*" />
+			</fileset>
+		</ftp>
+
+	</target>
+
+</project>

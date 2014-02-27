@@ -90,12 +90,10 @@ marcopolo@marcopolophoto.com
 <script src="js/lightbox.js"></script>
 <script type="text/javascript">
 $(function(){
-    $("#mp-navbar").load("mp-navbar.html"); 
+    $("#mp-navbar").load("mp-navbar.html", function() {
+    	document.getElementById("restauration").className="active"; 
+    }); 
   });
-  
-$("#mp-navbar").ready(function() {
-	document.getElementById("restauration").className="active"; 
-});	  
 </script>
 
 </body>

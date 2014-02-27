@@ -110,8 +110,11 @@
 <script src="js/lightbox.js"></script>
 <script type="text/javascript">
 $(function(){
-    $("#mp-navbar").load("mp-navbar.html"); 
+    $("#mp-navbar").load("mp-navbar.html", function() {
+    	document.getElementById("nosphotos").className="active"; 
+    }); 
   });
+
 </script>
 </body>
 </html>

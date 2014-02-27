@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/bootstrap-responsivee.css" rel="stylesheet">
 <link href="css/my-bootstrap.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
 <link href='http://fonts.googleapis.com/css?family=Lato:300'
@@ -181,8 +181,11 @@ $('.carousel').carousel({
 });
 
 $(function(){
-    $("#mp-navbar").load("mp-navbar.html"); 
+    $("#mp-navbar").load("mp-navbar.html", function() {
+    	document.getElementById("index").className="active"; 
+    }); 
   });
+
 </script>
 </body>
 </html>

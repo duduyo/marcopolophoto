@@ -1,3 +1,10 @@
+<?php
+  // Fichier de conf
+  include (str_replace('\\','/',getcwd()).'/class/config.php');
+  include (str_replace('\\','/',getcwd()).'/class/functions.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,54 +22,30 @@
 	</div>
 <div class="container">
   <hr>
-  
+<div class="row">
 <?php
 
-$dir    = './img/galerie';
-$files2 = scandir($dir, 1);
-$colonne=1;
 
-foreach ($files2 as &$value) {
+$listeAlbums=getListeAlbum('./img/galerie');
+$colCount=1;
+
+foreach ($listeAlbums as $album) {
+	if ($colCount = 4) {
+		$colCount=1;
 ?>
-
-
+  </div>
+  <div class="row">
 <?php
-$colonne++;
-}
+	}
 ?>
-  
-  <div class="row">
     <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
-    <div class="span4">
-      <h3> Nature's Valley<small> By <a href="#">Paul venter</a></small> </h3>
-      <a rel="lightbox" href="img/thumb2.jpg"><img src="img/thumb2.jpg" alt=""></a></div>
-    <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
-  </div>
-  <div class="row">
-    <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
-    <div class="span4">
-      <h3> Nature's Valley<small> By <a href="#">Paul venter</a></small> </h3>
-      <a rel="lightbox" href="img/thumb2.jpg"><img src="img/thumb2.jpg" alt=""></a></div>
-    <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
-  </div>
-  <div class="row">
-    <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
-    <div class="span4">
-      <h3> Nature's Valley<small> By <a href="#">Paul venter</a></small> </h3>
-      <a rel="lightbox" href="img/thumb2.jpg"><img src="img/thumb2.jpg" alt=""></a></div>
-    <div class="span4">
-      <h3>Deep Sky <small> By <a href="#">Srawat56</a></small></h3>
-      <a rel="lightbox" href="img/thumb1.jpg"><img src="img/thumb1.jpg" alt=""></a> </div>
+      <h3> <?php echo ($album[0]); ?><small> <!--  By <a href="#">Paul venter</a></small> --> </h3>
+      <a rel="lightbox" href="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>">TEST<img src="/img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>" alt=""></a>
+    </div>
+	<?php
+	$colCount++;
+}		
+?>
   </div>
   <hr>
 

@@ -8,6 +8,13 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
 
 body {
   margin: 0;
@@ -18,13 +25,34 @@ body {
   background: #6f7358;
 }
 
-.navbar-inner {
-  min-height: 40px;
-  padding-right: 20px;
-  padding-left: 20px;
-  }
-
 .navbar {
   color: #dbdbdb;
   background: #d1ff00;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white; 
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  color: white;
+}
+
+.navbar .nav > li > a {
+  margin: 0px 10px 5px;
+}
+
+.navbar-inner {
+  min-height: 45px;
+  }
+

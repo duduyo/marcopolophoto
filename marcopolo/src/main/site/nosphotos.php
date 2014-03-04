@@ -6,10 +6,10 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <title>Respond | Portfolio</title>
-<meta charset="utf-8">
+<meta charset="iso-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -22,7 +22,9 @@
 	</div>
 <div class="container">
   <hr>
-<div class="row">
+<!--  
+<div class="row"> 
+-->
 <?php
 
 
@@ -30,27 +32,40 @@ $listeAlbums=getListeAlbum('./img/galerie');
 $colCount=1;
 
 foreach ($listeAlbums as $album) {
-	if ($colCount = 4) {
+	if ($colCount == 4) {
 		$colCount=1;
 ?>
-  </div>
-  <div class="row">
+<!--
+   </div>
+  <div class="row"> 
+  -->
 <?php
 	}
+	$cheminFichierPhoto = 'img/galerie/'.$album[0].'/'.$album[1];
+	// lecture dans l'imager
+	$imgSize = getimagesize($cheminFichierPhoto);
+	$orientationPortrait = ($imgSize[1] > $imgSize[0]);
+	if ($orientationPortrait) {
+		echo ('<div class="span2">');	
+	} else {
+		echo ('<div class="span4">');
+	}
 ?>
-    <div class="span4">
-      <h3> <?php echo ($album[0]); ?><small> <!--  By <a href="#">Paul venter</a></small> --> </h3>
-      <a rel="lightbox" href="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>">TEST<img src="/img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>" alt=""></a>
+      <h3> <?php echo ($album[0]); ?></h3> 
+      <a rel="lightbox" href="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>"><img src="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>" alt=""></a>
     </div>
 	<?php
 	$colCount++;
 }		
 ?>
-  </div>
-  <hr>
+<!--
 
-  
-  <footer class="row">
+</div>
+  -->
+
+</div>  
+<hr>
+<footer class="row">
     <p> &copy;2012 Your Company.<br>
       Design by <a href="http://www.awfulmedia.com">AwfulMedia.com</a> </p>
   </footer>

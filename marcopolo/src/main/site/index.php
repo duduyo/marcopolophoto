@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <title>Marcopolo</title>
-<meta charset="utf-8">
+<meta charset="iso-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-responsivee.css" rel="stylesheet">
@@ -22,10 +22,10 @@
 
 				<h3>l'agence photographique</h3>
 				<blockquote>
-					Marcopolo est une Agence d'Illustration GÃ©nÃ©rale et de Reportage.<br>
+					Marcopolo est une Agence d'Illustration Générale et de Reportage.<br>
 					Vous recherchez-une photo ?<br> Explorez notre fond.
-					Vous souhaitez une photo inÃ©dite ou introuvable ?<br>
-					RÃ©alisons ensemble la photo que vous cherchez sur la base dâ€™un prix photothÃ¨que, avec nos maquilleuses, nos stylistes, nos modÃ¨les, nos studios...
+					Vous souhaitez une photo inédite ou introuvable ?<br>
+					Réalisons ensemble la photo que vous cherchez sur la base d’un prix photothèque, avec nos maquilleuses, nos stylistes, nos modèles, nos studios...
 					Contactez-nous.
 					<br> restaurez vos  photos !
 					
@@ -59,102 +59,30 @@
 		<hr>
 		<div class="row">
 			<div class="span4">
-				<h3>
-					Familles<small> By <a href="#">Srawat56</a></small>
-				</h3>
+				<h3>Familles</h3>
 				<a rel="lightbox" href="img/galerie/2.jpg"><img
 					src="img/galerie/2.jpg" alt=""></a>
 			</div>
 			<div class="span4">
-				<h3>
-					Enfants<small> By <a href="#">Paul venter</a></small>
-				</h3>
+				<h3>Enfants</h3>
 				<a rel="lightbox" href="img/galerie/1.jpg"><img
 					src="img/galerie/1.jpg" alt=""></a>
 			</div>
 			<div class="span4">
-				<h3>
-					Paysages<small> By <a href="#">Paul venter</a></small>
-				</h3>
+				<h3>Paysages</h3>
 				<a rel="lightbox" href="img/galerie/3.jpg"><img
 					src="img/galerie/3.jpg" alt=""></a>
 			</div>
 		</div>
-
 		<div class="row">
-			<div class="span4">
-				<h3>
-					Familles<small> By <a href="#">Srawat56</a></small>
-				</h3>
-				<a rel="lightbox" href="img/galerie/2.jpg"><img
-					src="img/galerie/2.jpg" alt=""></a>
-			</div>
-			<div class="span4">
-				<h3>
-					Enfants<small> By <a href="#">Paul venter</a></small>
-				</h3>
-				<a rel="lightbox" href="img/galerie/1.jpg"><img
-					src="img/galerie/1.jpg" alt=""></a>
-			</div>
-			<div class="span4">
-				<h3>
-					Paysages<small> By <a href="#">Paul venter</a></small>
-				</h3>
-				<a rel="lightbox" href="img/galerie/3.jpg"><img
-					src="img/galerie/3.jpg" alt=""></a>
-			</div>
-		</div>
-		<hr>
-		<div class="row">
-			<div class="span6 thumb-list">
-				<a rel="lightbox" href="img/thumb-small01.png"><img
-					src="img/thumb-small01.png" alt=""></a>
-				<h3>
-					<a href="#">This Should Be Your Title.</a>
-				</h3>
-				<p>This will be the description or something I guess. I don't
-					know. Your choice.You could summarize something here. Keep it
-					simple. Just a few short sentences. Maybe one large one? No, a few
-					short ones.</p>
-			</div>
-			<div class="span6 thumb-list">
-				<a rel="lightbox" href="img/thumb-small02.png"><img
-					src="img/thumb-small02.png" alt=""></a>
-				<h3>
-					<a href="#">This Should Be Your Title.</a>
-				</h3>
-				<p>This will be the description or something I guess. I don't
-					know. Your choice.</p>
-				<a href="#" class="btn">Details</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span6 thumb-list">
-				<a rel="lightbox" href="img/thumb-small01.png"><img
-					src="img/thumb-small01.png" alt=""></a>
-				<h3>
-					<a href="#">This Should Be Your Title.</a>
-				</h3>
-				<p>This will be the description or something I guess. I don't
-					know. Your choice.</p>
-				<a href="#" class="btn">Details</a>
-			</div>
-			<div class="span6 thumb-list">
-				<a rel="lightbox" href="img/thumb-small02.png"><img
-					src="img/thumb-small02.png" alt=""></a>
-				<h3>
-					<a href="#">This Should Be Your Title.</a>
-				</h3>
-				<p>This will be the description or something I guess. I don't
-					know. Your choice.</p>
-				<a href="#" class="btn">Details</a>
-			</div>
-		</div>
+		<div class="span5">
+		<h3>>>> Plus de photos dans notre <a>gallerie</a></h3>
+</div>
+</div>
 		<hr>
 		<footer class="row">
 			<p>
-				&copy;2012 Your Company.<br> Design by <a
-					href="http://www.awfulmedia.com">AwfulMedia.com</a>
+				&copy;2014 Marcopolophoto
 			</p>
 		</footer>
 	</div>

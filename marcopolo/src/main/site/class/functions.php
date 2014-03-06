@@ -160,7 +160,7 @@ function getSortedPictureList($pictureDir, $compareFunctionName) {
 	
 	// Retourne un tableau contenant tous les albums
 	// Chaque élément du tableau est un tableau avec [1] le nom de l'album=nom du repertoire, [2] l'url d'une image
-function getListeAlbum($racineAlbums, $nomFnComparaison) {
+function getListeAlbum($racineAlbums) {
 	// Création du tableau qui va contenir les albums
 	// On va trier ce tableau par ordre alphabetique, trouver la photo courante, precendante et suivante
 	$tabAlbums = array ();

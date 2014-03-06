@@ -22,9 +22,7 @@
 	</div>
 <div class="container">
   <hr>
-<!--  
 <div class="row"> 
--->
 <?php
 
 
@@ -35,40 +33,40 @@ foreach ($listeAlbums as $album) {
 	if ($colCount == 4) {
 		$colCount=1;
 ?>
-<!--
    </div>
   <div class="row"> 
-  -->
 <?php
 	}
 	$cheminFichierPhoto = 'img/galerie/'.$album[0].'/'.$album[1];
 	// lecture dans l'imager
-	$imgSize = getimagesize($cheminFichierPhoto);
-	$orientationPortrait = ($imgSize[1] > $imgSize[0]);
-	if ($orientationPortrait) {
-		echo ('<div class="span2">');	
-	} else {
-		echo ('<div class="span4">');
-	}
+//	$imgSize = getimagesize($cheminFichierPhoto);
+//	$orientationPortrait = ($imgSize[1] > $imgSize[0]);
+//	if ($orientationPortrait) {
+//		echo ('<div class="span2">');	
+//	} else {
+//		echo ('<div class="span4">');
+//	}
 ?>
+      <div class="span4">
       <h3> <?php echo ($album[0]); ?></h3> 
-      <a rel="lightbox" href="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>"><img src="img/galerie/<?php echo ($album[0].'/'.$album[1]); ?>" alt=""></a>
+      <div class="monConteneurImg">
+      <a rel="lightbox" href="<?php echo ($cheminFichierPhoto); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
+    </div>
     </div>
 	<?php
 	$colCount++;
 }		
 ?>
-<!--
 
 </div>
-  -->
 
 </div>  
 <hr>
-<footer class="row">
-    <p> &copy;2012 Your Company.<br>
-      Design by <a href="http://www.awfulmedia.com">AwfulMedia.com</a> </p>
-  </footer>
+		<footer class="row">
+			<p>
+				&copy;2014 Marcopolophoto
+			</p>
+		</footer>
 </div>
 <!-- /container -->
 <script src="js/jquery-1.7.1.min.js"></script>

@@ -8,12 +8,16 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-img {
+.span4 img {
   max-width: 100%;
-  max-height: 100%;
-  vertical-align: middle;
-  border: 0;
+  max-height: 200px;
   -ms-interpolation-mode: bicubic;
+}
+
+.monConteneurImg {
+	max-height: 200px;
+	width:100%;
+	text-align: center;
 }
 
 body {
@@ -21,13 +25,30 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  color: #333333;
+  color: #bfbfbf;
   background: #6f7358;
 }
 
+a {
+  color: #d7f497;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f4ffdb;
+  text-decoration: underline;
+}
+
+p {
+	color: #bfbfbf;
+}
 .navbar {
   color: #dbdbdb;
   background: #d1ff00;
+}
+
+.span4 h3 {
+	text-align:center;
 }
 
 h1,

@@ -134,13 +134,15 @@
 		<ftp action="delete" server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" remotedir="${ftp.dir}" verbose="true" passive="yes">
 			<fileset>
 				<include name="**/*" />
-			</fileset>
+				<exclude name="**/*.jpg" />
+	</fileset>
 		</ftp>
 
 		<!-- Upload to the server	    -->
 		<ftp server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" remotedir="${ftp.dir}" binary="yes" verbose="false" passive="yes">
 			<fileset dir="${projet.site.dir}">
 				<include name="**/*" />
+				<exclude name="**/*.jpg" />
 			</fileset>
 		</ftp>
 

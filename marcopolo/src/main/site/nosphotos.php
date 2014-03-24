@@ -9,7 +9,7 @@
 <html lang="fr">
 <head>
 <title>marcopolophoto</title>
-<meta charset="iso-8859-1">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -36,7 +36,8 @@ foreach ($listeAlbums as $album) {
   <div class="row"> 
 <?php
 	}
-	$cheminFichierPhoto = 'img/galerie/'.$album[0].'/'.$album[1];
+	
+	$cheminFichierPhoto = 'img/galerie/'.rawurlencode($album[0]).'/'.$album[1];
 	// lecture dans l'imager
 //	$imgSize = getimagesize($cheminFichierPhoto);
 //	$orientationPortrait = ($imgSize[1] > $imgSize[0]);
@@ -49,7 +50,7 @@ foreach ($listeAlbums as $album) {
       <div class="span4">
       <h3> <?php echo ($album[0]); ?></h3> 
       <div class="monConteneurImg">
-      <a href="album.php?album=<?php echo ($album[0]); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
+      <a href="album.php?album=<?php echo (rawurlencode($album[0])); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
     </div>
     </div>
 	<?php

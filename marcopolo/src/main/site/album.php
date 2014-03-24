@@ -9,7 +9,7 @@
 <html lang="fr">
 <head>
 <title>marcopolophoto</title>
-<meta charset="iso-8859-1">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -42,7 +42,7 @@ foreach ($listePhotos as $photo) {
   <div class="row"> 
 <?php
 	}
-	$cheminFichierPhoto = 'img/galerie/'.$albumCourant.'/'.$photo[0];
+	$cheminFichierPhoto = 'img/galerie/'.rawurlencode($albumCourant).'/'.$photo[0];
 	// lecture dans l'imager
 //	$imgSize = getimagesize($cheminFichierPhoto);
 //	$orientationPortrait = ($imgSize[1] > $imgSize[0]);
@@ -55,7 +55,7 @@ foreach ($listePhotos as $photo) {
       <div class="span4">
       <h4> <?php echo ($photo[0]); ?></h4> 
       <div class="monConteneurImg">
-      <a rel="lightbox[<?php echo ($albumCourant); ?>]" href="<?php echo ($cheminFichierPhoto); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
+      <a rel="lightbox[<?php echo (rawurlencode($albumCourant)); ?>]" href="<?php echo ($cheminFichierPhoto); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
     </div>
     </div>
 	<?php

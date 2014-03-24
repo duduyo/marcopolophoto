@@ -127,15 +127,15 @@ function generateResizedPictureIfNeeded($basePicture, $resizedPicture, $width, $
   }		
 }
 		
-// Retourne le tableau contenant toutes les photos +  metadonnees contenus dans le fichier
+// Retourne le tableau contenant toutes les photos +  metadonnees
 // Ce tableau est trie par date de prise de vue
-function getSortedByDatePictureList($pictureDir) {
-	return getSortedPictureList($pictureDir, 'pictureDateCompare');
+function getListePhotosTrieeParDate($pictureDir) {
+	return getListePhotos($pictureDir, 'pictureRandomCompare');
 }
 
-// Retourne le tableau contenant toutes les photos +  metadonnees contenus dans le fichier
-// Ce tableau est trie par date de prise de vue
-function getSortedPictureList($pictureDir, $compareFunctionName) {
+// Retourne le tableau contenant toutes les photos +  metadonnees 
+// Ce tableau est trie en appliquant la fonction passée en paramètre
+function getListePhotos($pictureDir, $compareFunctionName) {
       // Création du tableau qui va contenir les fichiers et dossiers
       // On va trier ce tableau par ordre alphabetique, trouver la photo courante, precendante et suivante
       $tabFichiersPhotos = array();
@@ -147,9 +147,9 @@ function getSortedPictureList($pictureDir, $compareFunctionName) {
       if (strtolower((substr($fichier,(strlen($fichier)-4),4)))==".jpg") {
 
                 // Recuperation des metas données de l'image
-                $pictureData = getPictureMetaData($pictureDir.'/'.$fichier, $pictureDir.'/'.'desc.xml');                
+            //    $pictureData = getPictureMetaData($pictureDir.'/'.$fichier, $pictureDir.'/'.'desc.xml');                
                 
-		$tabFichiersPhotos[] = array($fichier, $pictureData);
+		$tabFichiersPhotos[] = array($fichier, substr($fichier,(strlen($fichier)-4),4));
 	}
       }
       closedir($dossier);
@@ -159,7 +159,7 @@ function getSortedPictureList($pictureDir, $compareFunctionName) {
 }
 	
 	// Retourne un tableau contenant tous les albums
-	// Chaque élément du tableau est un tableau avec [1] le nom de l'album=nom du repertoire, [2] l'url d'une image
+	// Chaque élément du tableau est un tableau avec [1] le nom de l'album=nom du repertoire, [2] l'url d'une image prise au hasard
 function getListeAlbum($racineAlbums) {
 	// Création du tableau qui va contenir les albums
 	// On va trier ce tableau par ordre alphabetique, trouver la photo courante, precendante et suivante
@@ -198,6 +198,16 @@ function getPhotoAuPif($repAlbum) {
 	chdir($curdir);
 	$file=$files[array_rand($files)];
 	return $file;
+}
+
+// retourne vrai si l'image est en format paysage, faux sinon
+function isPaysage($photo) {
+
+	// Lit les dimensions de l'image
+	$photoSize = GetImageSize($photo);
+	$photoSizeW = $photoSize[0];
+	$photoSizeH = $photoSize[1];
+	return ($photoSizeW > $photoSizeH);
 }
 
 ?>

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Respond | Portfolio</title>
+<title>marcopolophoto</title>
 <meta charset="iso-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -21,7 +21,6 @@
 	<div id="mp-navbar">
 	</div>
 <div class="container">
-  <hr>
 <div class="row"> 
 <?php
 
@@ -50,7 +49,7 @@ foreach ($listeAlbums as $album) {
       <div class="span4">
       <h3> <?php echo ($album[0]); ?></h3> 
       <div class="monConteneurImg">
-      <a rel="lightbox" href="<?php echo ($cheminFichierPhoto); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
+      <a href="album.php?album=<?php echo ($album[0]); ?>"><img src="<?php echo ($cheminFichierPhoto); ?>" alt=""></a>
     </div>
     </div>
 	<?php
